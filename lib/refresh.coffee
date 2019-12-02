@@ -58,7 +58,14 @@ handleDrop = (evt, ui, originalIndex, originalOrder) ->
 
   item = getItem($item)
   $sourcePage = $item.data('pageElement')
+  sourceSite = $sourcePage.data('site')
   sourceIsGhost = $sourcePage.hasClass('ghost')
+
+  dragAttribution = {
+    page: $sourcePage[0].id
+  }
+  dragAttribution[site] = sourceSite if sourceSite
+  console.log "dragAttribution", dragAttribution
 
   $destinationPage = $item.parents('.page:first')
   destinationIsGhost = $destinationPage.hasClass('ghost')
